@@ -70,6 +70,8 @@
   color: white;
   justify-content: center;
   width: 70%;
+  max-height: 450px;
+  overflow: auto;
   /* padding-right: 40px; */
 
 }

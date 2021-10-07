@@ -24,6 +24,7 @@ export default function Movie() {
             backgroundImage: `url(${ImgSrc(data.backdrop_path, "w780")})`,
             width: "100%",
             height: "100%",
+            backgroundSize: "cover",
           }}
         >
           <div className="card-movie">
