@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 export function useMoviesDB(endpoint, options) {
   const [data, setData] = useState(null);
@@ -6,14 +7,15 @@ export function useMoviesDB(endpoint, options) {
 
   useEffect(() => {
     setLoading(true);
-    fetch(
-      `https://api.themoviedb.org/3/${endpoint}?api_key=0789d2e7e4ce91a53c04349a490ffe9e&${new URLSearchParams(
-        options?.query
-      ).toString()}`
-    )
-      .then((r) => r.json())
-      .then(setData)
-      .finally(() => setLoading(false));
+    axios
+      .get(
+        `https://api.themoviedb.org/3/${endpoint}?api_key=0789d2e7e4ce91a53c04349a490ffe9e&${new URLSearchParams(
+          options?.query
+        ).toString()}`
+      )
+      // .then((r) => r.json())
+      .then((res) => setData(res.data))
+      .then(() => setLoading(false));
   }, [endpoint, options]);
 
   return { data, loading };

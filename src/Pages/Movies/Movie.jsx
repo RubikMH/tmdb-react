@@ -5,11 +5,16 @@ import ImgSrc from "../../Component/helpers/ImgSrc";
 import ConvertTimes from "../../Component/helpers/ConvetTimes";
 // import HandelReleaseData from "../../Component/helpers/HandelReleaseData";
 import { useLocation } from "react-router-dom";
+// import stars from "../../Component/helpers/stars";
+import { Progress } from "antd";
+// import stars from "./helpers/stars";
 
 export default function Movie() {
   const Location = useLocation();
 
   const { data, loading } = useMoviesDB(Location.pathname);
+
+  // console.log(Location.pathname);
 
   // const releaseDate = data.release_date;
 
@@ -21,7 +26,7 @@ export default function Movie() {
         <div
           className="movie"
           style={{
-            backgroundImage: `url(${ImgSrc(data.backdrop_path, "w780")})`,
+            backgroundImage: `url(${ImgSrc(data.backdrop_path, "original")})`,
             width: "100%",
             height: "100%",
             backgroundSize: "cover",
@@ -51,8 +56,24 @@ export default function Movie() {
                   </span>
                 </div>
               </div>
-              <h4 className="tagline">{`The purpose of the film : ${data.tagline}`}</h4>
+              <div className="avrg">
+                <Progress
+                  type="circle"
+                  strokeColor={
+                    data.vote_average < 5
+                      ? { "100%": "red" }
+                      : data.vote_average < 7
+                      ? { "100%": "orange" }
+                      : { "100%": "green" }
+                  }
+                  style={{ transform: "scale(.5)" }}
+                  percent={data.vote_average * 10}
+                />
+              </div>
               <span className="overview">{data.overview}</span>
+              <div className="div-btn">
+                <button className="btn-movie">watch the movie</button>
+              </div>
             </div>
           </div>
         </div>
