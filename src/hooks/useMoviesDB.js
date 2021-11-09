@@ -4,6 +4,11 @@ import axios from "axios";
 export function useMoviesDB(endpoint, options) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (error) throw new Error("VPN");
+  }, [error]);
 
   useEffect(() => {
     setLoading(true);
@@ -15,7 +20,8 @@ export function useMoviesDB(endpoint, options) {
       )
       // .then((r) => r.json())
       .then((res) => setData(res.data))
-      .then(() => setLoading(false));
+      .then(() => setLoading(false))
+      .catch(setError);
   }, [endpoint, options]);
 
   return { data, loading };

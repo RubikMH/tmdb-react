@@ -7,13 +7,16 @@ import Layout from "./Layout/Layout";
 import { BrowserRouter } from "react-router-dom";
 import Router from "./Pages/Router";
 import "antd/dist/antd.dark.css";
+import ErrorBoundary from "./Component/Error/ErrorBoundary";
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Layout>
-      <Router />
-    </Layout>
-  </BrowserRouter>,
+  <ErrorBoundary>
+    <BrowserRouter>
+      <Layout>
+        <Router />
+      </Layout>
+    </BrowserRouter>
+  </ErrorBoundary>,
   document.getElementById("root")
 );
 

@@ -67,7 +67,7 @@
   padding-left: 40px;
   padding-right: 20px;
   flex-direction: row;
-  background-color: black;
+  /* background-color: black; */
   color: white;
   justify-content: space-evenly;
   width: 70%;
@@ -159,4 +159,14 @@
 .btn-movie:hover {
   padding-left: 0.7em;
   padding-right: 0.3em;
+}
+
+.bg1 {
+  position: relative;
+  content: " ";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.836)
 }
