@@ -1,0 +1,18 @@
+.ScoreMovie {
+    display: flex;
+    border: 1px solid green;
+    border-radius: 80px;
+    width: 34px;
+    height: 30px;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding: 3px;
+}
+
+.img-slider {
+    object-fit: cover;
+}
+
+.ant-card-cover img {
+    border-radius: 20px 20px 0 0 !important;
+}
